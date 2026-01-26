@@ -1,0 +1,49 @@
+name: AQI Automation Pipeline
+
+# Schedule triggers
+on:
+  schedule:
+    # Run feature pipeline every hour
+    - cron: "0 * * * *"
+    # Run training pipeline daily at 2 AM UTC
+    - cron: "0 2 * * *"
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  feature_pipeline:
+    name: Feature Pipeline
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 * * * *'  # Hourly only
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Feature Pipeline
+        run: python data/fetch_raw_data.py && python features/build_features.py
+
+  training_pipeline:
+    name: Training Pipeline
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 2 * * *'  # Daily only
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Training Pipeline
+        run: python models/train_models_compare.py

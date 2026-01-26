@@ -1,0 +1,12 @@
+pymongo
+requests
+python-dotenv
+pandas
+scikit-learn
+joblib
+streamlit
+shap
+matplotlib
+xgboost
+lightgbm
+plotly
