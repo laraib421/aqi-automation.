@@ -1,13 +1,13 @@
+streamlit==1.19.0
+altair==4.2.2
 pymongo
 requests
 python-dotenv
 pandas
 scikit-learn
 joblib
-streamlit==1.19.0
 shap
 matplotlib
 xgboost
 lightgbm
 plotly
-altair==4.2.2
