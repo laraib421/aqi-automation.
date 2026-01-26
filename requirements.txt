@@ -4,11 +4,10 @@ python-dotenv
 pandas
 scikit-learn
 joblib
-streamlit
+streamlit==1.19.0
 shap
 matplotlib
 xgboost
 lightgbm
 plotly
 altair==4.2.2
-
