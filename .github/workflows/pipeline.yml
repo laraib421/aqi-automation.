@@ -11,6 +11,10 @@ jobs:
     name: AQI Automation Pipeline - Hourly
     runs-on: ubuntu-latest
 
+    env:
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+      OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+
     steps:
       # 1️⃣ Checkout your repository
       - name: Checkout Repo

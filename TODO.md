@@ -1,24 +1,8 @@
-# AQI Hyderabad Enhancement Tasks
+# AQI Automation Pipeline Fix TODO
 
-## 1. Update Dependencies
-- [ ] Add XGBoost and LightGBM to requirements.txt
-
-## 2. Model Training Pipeline
-- [x] Update models/train_models_compare.py to include XGBoost and LightGBM
-- [x] Ensure best model selection based on lowest RMSE and highest R²
-- [x] Configure LightGBM with leaf-wise growth for efficiency
-
-## 3. Forecasting Pipeline
-- [x] Update pipeline/forecast.py to support variable forecast days (1-7)
-
-## 4. Streamlit Dashboard Enhancements
-- [x] Add sidebar slider for forecast horizon (1-7 days)
-- [x] Enhance visualization: Merge observed + predicted data, color-coded thresholds, tooltips
-- [x] Add CSV download button for predictions
-- [x] Ensure all pollutants (CO, NO2, O3, SO2) and meteorological variables are displayed
-
-## 5. Testing and Validation
-- [x] Test model training with new algorithms (Ridge selected as best model)
-- [ ] Test dynamic forecasting (requires trained model)
-- [ ] Test dashboard features (requires data and model)
-- [ ] Test CSV export functionality (requires forecast data)
+## Steps to Complete
+- [x] Diagnose pipeline failure: Identified missing environment variables in GitHub Actions
+- [x] Update .github/workflows/pipeline.yml to include env variables from secrets
+- [ ] Ensure GitHub repository secrets are configured for MONGO_URI and OPENWEATHER_API_KEY
+- [ ] Test the pipeline by triggering a manual run or waiting for the next scheduled run
+- [ ] Verify that the pipeline completes successfully without errors
